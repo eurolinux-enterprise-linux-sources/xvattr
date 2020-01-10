@@ -1,0 +1,11 @@
+
+
+./configure
+
+make
+
+make install
+
+
+For more options:
+./configure --help 
