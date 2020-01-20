@@ -1,0 +1,10 @@
+--- xvattr.pod.in.orig	2013-08-19 17:52:00.487003221 +0100
++++ xvattr.pod.in	2013-08-19 17:52:49.327064739 +0100
+@@ -1,5 +1,7 @@
+ =pod
+ 
++=encoding utf8
++
+ =head1 NAME
+ 
+ @PACKAGE@ - Query/Set X11 XVideo Setting(s)

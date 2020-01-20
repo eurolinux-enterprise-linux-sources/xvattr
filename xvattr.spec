@@ -7,11 +7,12 @@
 Summary: Utility for getting and setting Xv attributes
 Name: xvattr
 Version: 1.3
-Release: 24%{?dist}
+Release: 27%{?dist}
 License: GPLv2+
 Group: Applications/System
 URL: http://www.dtek.chalmers.se/groups/dvd/
 Source: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.gz
+Patch0: encoding.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 %if %{gxvattr}
 BuildRequires: gtk+-devel
@@ -35,8 +36,10 @@ GTK1-based GUI for inspecting and setting Xv attributes.
 # Append GTK CFLAGS to CFLAGS instead of overwriting CFLAGS (optflags get used)
 %{__perl} -pi -e 's|^CFLAGS = (.*)|CFLAGS += $1|g' Makefile*
 # Convert man page to UTF-8
-iconv -f iso8859-1 -t utf-8 -o tmp xvattr.1
-%{__mv} -f tmp xvattr.1
+%patch0
+iconv -f iso8859-1 -t utf-8 -o tmp xvattr.pod.in
+%{__mv} -f tmp xvattr.pod.in
+rm xvattr.pod xvattr.1 xvattr.html
 
 
 %build
@@ -71,6 +74,15 @@ sed -i 's|bin_PROGRAMS = xvattr$(EXEEXT) gxvattr$(EXEEXT)|bin_PROGRAMS = xvattr$
 %endif
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 1.3-27
+- Mass rebuild 2014-01-24
+
+* Mon Aug 19 2013 Mat Booth <fedora@matbooth.co.uk> - 1.3-26
+- Fix pod encoding, rhbz #993161
+
+* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.3-25
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Tue Mar 26 2013 Adam Jackson <ajax@redhat.com> 1.3-24
 - BuildRequires: perl-podlators for pod2man
 
