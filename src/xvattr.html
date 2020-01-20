@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<TITLE>xvattr - Query/Set X11 XVideo Setting</TITLE>
+<LINK REV="made" HREF="mailto:bhcompile@daffy.perf.redhat.com">
+</HEAD>
+
+<BODY>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<UL>
+
+		<LI><A HREF="#options">OPTIONS</A></LI>
+	</UL>
+
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#see also">SEE ALSO</A></LI>
+	<LI><A HREF="#copyright">COPYRIGHT</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<HR>
+<H1><A NAME="name">NAME</A></H1>
+<P>xvattr - Query/Set X11 XVideo <CODE>Setting(s)</CODE></P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<P><STRONG>xvattr</STRONG> [<EM>options</EM>...]</P>
+<P>This program is used for getting and setting X11 Xv attributes such as
+XV_BRIGHTNESS, XV_CONTRAST, XV_SATURATION, XV_HUE, XV_COLORKEY, ...</P>
+<P>For this program to work, you must have a version of X11 with the
+XVideo extension and a graphics card that has Xv graphics acceleration.</P>
+<P>Note: On some cards XV_BRIGHTNESS and XV_CONTRAST are not listed among
+the available attributes, but they can still be set/changed.</P>
+<P>
+<H2><A NAME="options">OPTIONS</A></H2>
+<P>With no options, all parameters are displayed.</P>
+<P>Long options are handled by GNU getopts and follow those rules. In
+particular, options that are specified with a double dash (--) rather
+than a single dash (-), can be abbreviated as long as they are
+unique. Long parameters that need a value specified may have the
+parameter and the value separated with blank space or an optional
+equals sign (and no intervening space).</P>
+<P>For example the following are all equivalent:</P>
+<P>xvattr -a XV_BRIGHTNESS
+xvattr --attribute XV_BRIGHTNESS
+xvattr --att XV_BRIGHTNESS
+xvattr --att=XV_BRIGHTNESS</P>
+<P>Example:</P>
+<PRE>
+  &gt; xvattr
+  Adaptor: 0
+  Name: Matrox G-Series Backend Scaler
+   Port: 46
+    Name: XV_COLORKEY
+     Flags: XvGettable XvSettable 
+     Min value: 0
+     Max value: 16777215
+     Current value: 66046</PRE>
+<DL>
+<DT><STRONG><A NAME="item_%7B%2Da_%7C_%2D%2Dattribute%7D_attribute_name">{-a | --attribute} <EM>attribute name</EM></A></STRONG><BR>
+<DD>
+Show value of attribute <EM>attribute name</EM>
+<P>Example:</P>
+<PRE>
+  &gt; xvattr -a XV_BRIGHTNESS
+  XV_BRIGHTNESS = 24</PRE>
+<P></P>
+<P></P>
+<DT><STRONG><A NAME="item_%7B%2Da_%7C_%2D%2Dattribute%7D_attribute_name_%5B%">{-a | --attribute} <EM>attribute name</EM> [-v | --value] <EM>value</EM></A></STRONG><BR>
+<DD>
+Set attribute <EM>attribute name</EM> to value <EM>value</EM>.
+<P>Example:</P>
+<PRE>
+  &gt; xvattr -a XV_COLORKEY -v 10
+  XV_COLORKEY set to 10</PRE>
+<P></P>
+<P></P>
+<DT><STRONG><A NAME="item_%7B%2Dp_%7C_%2D%2Dport%7D_port_number">{-p | --port} <EM>port number</EM></A></STRONG><BR>
+<DD>
+Get the attribute on the specified port.  If -p is not set, the first
+available port is used.
+<P>Example:</P>
+<PRE>
+  &gt; xvattr -p 66
+  Found Xv 2.2
+  Adaptor: 0
+  Name: SIS Video Overlay
+   Port: 66
+    Name: XV_COLORKEY
+     Flags: XvGettable XvSettable 
+     Min value: 0
+     Max value: 16777215
+     Current value: 66046
+    Name: XV_BRIGHTNESS
+     Flags: XvGettable XvSettable 
+     Min value: -128
+     Max value: 127
+     Current value: 0
+    Name: XV_CONTRAST
+     Flags: XvGettable XvSettable 
+     Min value: 0
+     Max value: 255
+     Current value: 128</PRE>
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Björn Englund. Send bug reports to <CODE>d4bjorn@dtek.chalmers.se</CODE>
+<CODE>rocky@panix.com</CODE> turned the README into this document.</P>
+<P>
+<HR>
+<H1><A NAME="see also">SEE ALSO</A></H1>
+<P>See also <EM>xvinfo</EM> and <EM>XvQueryAdaptors</EM>, <EM>XvSetPortAttribute</EM>,
+and <EM>XvGetPortAttribute</EM>.</P>
+<P>
+<HR>
+<H1><A NAME="copyright">COPYRIGHT</A></H1>
+<PRE>
+  Copyright (C) 2001-2002 Björn Englund</PRE>
+<PRE>
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.</PRE>
+<PRE>
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.</PRE>
+<PRE>
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</PRE>
+
+</BODY>
+
+</HTML>
